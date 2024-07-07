@@ -18,15 +18,16 @@ def get_collection_as_dataframe(database_name:str, collection_name:str):
     """
 
     try:
-        logging.info(f"Reading data from Database: {database_name} and collection: {collection_name}")
+        logging.info(f"Reading Data from database: {database_name} and collection: {collection_name}")
         df = pd.DataFrame(list(mongo_client[database_name][collection_name].find()))
         logging.info(f"Found Columns: {df.columns}")
 
         if "_id" in df.columns:
-            logging.info("Dropping column: _id")
-            df = df.drop("_id", axis=1)
+            logging.info(f"Dropping Column: _id")
+            df.drop("_id", axis=1, inplace=True)
 
         logging.info(f"Rows and Columns in df: {df.shape}")
+
         return df
     
     except Exception as e:
