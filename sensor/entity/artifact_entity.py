@@ -28,7 +28,12 @@ class ModelTrainerArtifact:
     f1_test_sccore:float
 
 
+@dataclass
+class ModelEvaluationArtifact:
+    is_model_accepted:bool
+    improved_accuracy:float
 
-class ModelEvaluationArtifact:...
+
+    
 class ModelPusherArtifact:...
 
